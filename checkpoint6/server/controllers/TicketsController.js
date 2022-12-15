@@ -15,11 +15,6 @@ export class TicketsController extends BaseController {
 
 
 
-
-
-
-
-
   async createTicket(req, res, next) {
     try {
       req.body.accountId = req.userInfo.id
