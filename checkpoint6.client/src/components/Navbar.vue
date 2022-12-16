@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
-      </div>
+      <img src="https://st3.depositphotos.com/4290693/17467/i/1600/depositphotos_174673384-stock-photo-spooky-tower.jpg"
+        alt="" class="smaller-img rounded-circle">
+      <div class="p-2 mt-1 btn text-success">Home</div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +34,12 @@ export default {
 </script>
 
 <style scoped>
+.smaller-img {
+  height: 50px;
+  width: 50px;
+
+}
+
 a:hover {
   text-decoration: none;
 }

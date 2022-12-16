@@ -40,6 +40,11 @@
           </div>
           <button @click="getTicket()" class="btn btn-success fw-bold">Get Tickets!</button>
         </div>
+        <div>
+          <button @click="cancelEvent(event.id)" v-if="event.creatorId == myAccount.id"
+            class="btn btn-danger fw-bold">Cancel
+            Event</button>
+        </div>
       </section>
 
       <!-- NOTE this is ticket holders -->
@@ -75,13 +80,15 @@
           </form>
           <div v-for="c in comments" class="text-dark d-flex p-3 ">
             <div class="d-flex">
+              <button v-if="myAccount.id == c.creatorId" @click="deleteComment(c.id)"
+                class="btn btn-danger mdi mdi-delete" title="delete your comment"></button>
               <div class="align-items-center d-flex me-3">
                 <img :src="c.creator.picture" alt="" class="rounded-circle comment-img">
                 <div v-if="c.isAttending">
                   <span class="text-success">Has Tickets</span>
                 </div>
               </div>
-              <div class="p-3 card ">
+              <div class="p-3 card elevation-5">
                 <h5>{{ c.creator.name }}</h5>
                 {{ c.body }}
               </div>
@@ -108,6 +115,7 @@ import { eventsService } from "../services/EventsService";
 import { useRoute } from "vue-router";
 import { ticketsService } from "../services/TicketsService";
 import { commentsService } from "../services/CommentsService";
+
 
 export default {
 
@@ -170,11 +178,20 @@ export default {
 
       editable,
       createComment,
-      account: (() => AppState.account),
+      myAccount: computed(() => AppState.account),
       event: computed(() => AppState.activeEvent),
       comments: computed(() => AppState.comments),
       ticketHolders: computed(() => AppState.ticketHolders),
       isAttending: computed(() => AppState.ticketHolders.find(i => i.accountId == AppState.account.id)),
+
+      async cancelEvent(eventId) {
+        try {
+          await eventsService.cancelEvent(eventId)
+        } catch (error) {
+          Pop.error(error.message)
+          logger.log(error)
+        }
+      },
 
       async getTicket() {
         try {
@@ -182,6 +199,15 @@ export default {
         } catch (error) {
           Pop.error(error.message)
           logger.error.error
+        }
+      },
+
+      async deleteComment(id) {
+        try {
+          await commentsService.deleteComment(id)
+        } catch (error) {
+          Pop.error(error.message)
+          logger.log(error.message)
         }
       }
 

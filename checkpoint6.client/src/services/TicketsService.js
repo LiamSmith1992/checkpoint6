@@ -35,6 +35,16 @@ class TicketsService {
     }
   }
 
+
+  async deleteTickets(ticketId) {
+    const res = await api.delete('api/tickets/' + ticketId)
+    logger.log('deleting ticket', res.data)
+    AppState.myTickets.filter(t => t.id != ticketId)
+    this.getMyTickets()
+    AppState.activeEvent = AppState.events.find(e => e.Id == ticketId)
+    AppState.activeEvent.capacity++
+  }
+
 }
 
 
