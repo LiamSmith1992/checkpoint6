@@ -1,7 +1,13 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid p-0 ">
 
+    <section class="row big-img m-0  ">
+      <div class="text-center ">
 
+        <h2 class="fw-bold">Welcom To Tower</h2>
+        <h3>The Best In Events</h3>
+      </div>
+    </section>
 
 
 
@@ -18,8 +24,8 @@
 
       </div>
     </section>
-    <section class="row">
-      <div v-for="e in event" class="col-md-3 elevation-7 p-3">
+    <section class="row bg-dark ">
+      <div v-for="e in event" class="col-md-3  p-3">
         <EventCard :event="e" />
       </div>
     </section>
@@ -68,6 +74,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.big-img {
+  background-image: url('https://twistedsifter.com/wp-content/uploads/2017/01/abandoned-cooling-towers-by-reginald-van-de-velde-2.jpg');
+  width: 100%;
+  height: 20vh;
+  border: 5px solid black;
+}
+
 .elevation-7 {
   box-shadow: 7pt 7pt rgb(228, 220, 220);
 }

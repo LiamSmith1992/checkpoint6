@@ -13,9 +13,10 @@
               <h2 class="text-success">
                 {{ myEvent.name }}
               </h2>
+              <!-- <router-link :to="{ name: 'Event', params: { eventId: event.id } }"> -->
 
               <img :src="myEvent.coverImg" alt="" class="event-img img-fluid">
-
+              <!-- </router-link> -->
             </div>
           </div>
         </div>
@@ -23,15 +24,20 @@
     </section>
 
     <section class="row">
-      <div class="col-10  ">
-        <section class="  row justify-content-center">
-          <h1 class="text-center">My Tickets</h1>
+      <div class="col-12  ">
+        <section class="  row justify-content-center ">
+          <h1 class="">My Tickets</h1>
 
-          <div v-for="t in tickets" class="col-12 m-3 card bg-dark text-light d-flex ">
+          <div v-for="t in tickets" class="col-12 m-3 card bg-dark text-light d-flex  ">
 
-            <div class="d-flex align-items-center ">
-              <img :src="t.event.coverImg" alt="" class="ticket-img ">
-              <h3 class="p-2">{{ t.event.name }}</h3>
+            <div class="d-flex align-items-center mt-2 ">
+              <!-- <router-link :to="{ name: 'Event', params: { eventId: event.id } }"> -->
+              <div>
+
+                <h3 class="p-2">{{ t.event.name }}</h3>
+                <img :src="t.event.coverImg" alt="" class="ticket-img ">
+              </div>
+              <!-- </router-link> -->
               <h3 class="p-2">
                 <h3 class="text-warning">Where: </h3>{{ t.event.location }}
               </h3>
@@ -59,8 +65,10 @@ import EventCard from "../components/EventCard.vue";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { ticketsService } from "../services/TicketsService";
+import { useRouter } from "vue-router";
 export default {
   setup() {
+    // router = useRouter
     onMounted(() => {
     })
 
@@ -95,7 +103,7 @@ export default {
 
 <style lang="scss" scoped>
 .ticket-img {
-  height: 120px;
+  height: 200px;
   width: 200px;
 }
 

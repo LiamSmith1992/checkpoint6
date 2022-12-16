@@ -40,7 +40,7 @@
           </div>
           <button @click="getTicket()" class="btn btn-success fw-bold">Get Tickets!</button>
         </div>
-        <div>
+        <div v-if="!event.isCanceled">
           <button @click="cancelEvent(event.id)" v-if="event.creatorId == myAccount.id"
             class="btn btn-danger fw-bold">Cancel
             Event</button>
@@ -186,6 +186,7 @@ export default {
 
       async cancelEvent(eventId) {
         try {
+          await Pop.confirm('cancel event?')
           await eventsService.cancelEvent(eventId)
         } catch (error) {
           Pop.error(error.message)
@@ -204,6 +205,7 @@ export default {
 
       async deleteComment(id) {
         try {
+          await Pop.confirm('delete comment?')
           await commentsService.deleteComment(id)
         } catch (error) {
           Pop.error(error.message)

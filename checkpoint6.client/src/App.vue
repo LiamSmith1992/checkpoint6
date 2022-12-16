@@ -5,8 +5,11 @@
   <main>
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-    🦒 The Best Place For Events
+  <footer class="bg-warning text-dark">
+    <h5 class="pt-1">
+
+      🦒 The Best Place For Events
+    </h5>
   </footer>
 </template>
 
