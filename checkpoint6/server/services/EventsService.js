@@ -16,6 +16,11 @@ class EventsService {
     return event
   }
 
+  // async getMyEvents(accountId) {
+  //   const events = await dbContext.Events.find({ accountId }).populate('creator')
+  //   if (!events) throw new BadRequest('could not find your events')
+  //   return events
+  // }
 
   async create(body) {
     const event = await dbContext.Events.create(body)

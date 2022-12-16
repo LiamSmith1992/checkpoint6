@@ -11,10 +11,25 @@ class EventsService {
     const res = await api.get('api/events')
     logger.log('Logging events getter', res.data)
     AppState.events = res.data
+
+  }
+
+  async getEventById(eventId) {
+    const res = await api.get('api/events/' + eventId)
+    logger.log("getting event by id", res.data)
+    AppState.activeEvent = res.data
   }
 
 
 
+
+  async createEvent(body) {
+    const res = await api.post('api/events', body)
+    logger.log('creating event', res.data)
+    AppState.events.push(res.data)
+    return res.data
+
+  }
 
 
 

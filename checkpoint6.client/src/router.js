@@ -12,15 +12,20 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: loadPage('AboutPage')
+    path: '/eventForm',
+    name: 'EventForm',
+    component: loadPage('EventFormPage')
   },
   {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/events/:eventId',
+    name: 'Event',
+    component: loadPage('EventDetailsPage')
   }
 ]
 

@@ -7,4 +7,17 @@ export const AppState = reactive({
   account: {},
 
   events: [],
+
+  myTickets: [],
+
+  tickets: [],
+
+  activeEvent: null,
+
+  comments: [],
+
+  ticketHolders: [],
+
+  myEvents: [],
+
 })
