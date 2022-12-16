@@ -186,8 +186,10 @@ export default {
 
       async cancelEvent(eventId) {
         try {
-          await Pop.confirm('cancel event?')
-          await eventsService.cancelEvent(eventId)
+          if (await Pop.confirm('cancel event?')) {
+
+            await eventsService.cancelEvent(eventId)
+          }
         } catch (error) {
           Pop.error(error.message)
           logger.log(error)
@@ -205,8 +207,10 @@ export default {
 
       async deleteComment(id) {
         try {
-          await Pop.confirm('delete comment?')
-          await commentsService.deleteComment(id)
+          if (await Pop.confirm('delete comment?')) {
+
+            await commentsService.deleteComment(id)
+          }
         } catch (error) {
           Pop.error(error.message)
           logger.log(error.message)

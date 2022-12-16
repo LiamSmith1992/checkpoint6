@@ -2,14 +2,15 @@
   <div class="container-fluid">
     <section class="row">
       <h1 class="text-center">My Events</h1>
-      <div class="col-12 d-flex text-center">
 
 
 
-        <div v-if="myEvents" class="d-flex">
-          <div v-for="myEvent in myEvents" class="">
+      <div v-if="myEvents" class="col-12">
+        <div class="row">
 
-            <div v-if="!myEvent.isCanceled" class="card col-6 bg-dark p-2">
+          <div v-for="myEvent in myEvents" class=" col-md-3 p-1">
+
+            <div v-if="!myEvent.isCanceled" class="card  bg-dark p-2">
               <h2 class="text-success">
                 {{ myEvent.name }}
               </h2>
@@ -21,6 +22,7 @@
           </div>
         </div>
       </div>
+
     </section>
 
     <section class="row">
@@ -82,8 +84,10 @@ export default {
 
       async deleteTickets(ticketId) {
         try {
-          await Pop.confirm('you want to get rid of these tickets?')
-          await ticketsService.deleteTickets(ticketId)
+          if (await Pop.confirm('you want to get rid of these tickets?')) {
+
+            await ticketsService.deleteTickets(ticketId)
+          }
           Pop.toast('deleted tickets', "success")
         } catch (error) {
           logger.error(error.message)

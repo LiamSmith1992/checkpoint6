@@ -15,11 +15,11 @@
 
     <section class="row">
       <div class="col-12 bg-warning elevation-5 p-3 d-flex justify-content-around">
-        <button @click="filterBy = ''" class="btn btn-info">All</button>
-        <button @click="filterBy = 'concert'" class="btn btn-info">Concert</button>
-        <button @click="filterBy = 'convention'" class="btn btn-info">Convention</button>
-        <button @click="filterBy = 'sport'" class="btn btn-info">Sport</button>
-        <button @click="filterBy = 'digital'" class="btn btn-info">Digital</button>
+        <button @click="filterBy = ''" class="fw-bold btn btn-info">All</button>
+        <button @click="filterBy = 'concert'" class="btn btn-info fw-bold">Concert</button>
+        <button @click="filterBy = 'convention'" class="btn btn-info fw-bold">Convention</button>
+        <button @click="filterBy = 'sport'" class="btn btn-info fw-bold">Sport</button>
+        <button @click="filterBy = 'digital'" class="btn btn-info fw-bold">Digital</button>
 
 
       </div>
