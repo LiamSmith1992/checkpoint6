@@ -49,7 +49,7 @@
 
       <!-- NOTE this is ticket holders -->
       <section v-if="!event.isCanceled" class="row card m-0 bg-warning">
-        <h2>Look whose going!</h2>
+        <h2>Look who's going!</h2>
         <div class="col-12 d-flex m-2 ">
           <div v-for="t in ticketHolders" class="d-flex p-2 ">
             <div>
