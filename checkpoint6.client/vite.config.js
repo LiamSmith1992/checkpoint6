@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
-// https://vitejs.dev/config/
+// https://vitejs.dev/config/ yaaaaaaa
 export default defineConfig({
   plugins: [vue()],
   build: {
